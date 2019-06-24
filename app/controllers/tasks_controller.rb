@@ -42,7 +42,7 @@ def update
 end
 
 def destroy
-    set.task
+    set_task
     @task.destroy
     flash[:success]="タスクは正常に削除されました"
     redirect_to tasks_url
@@ -55,7 +55,7 @@ def set_task
 end
 
 def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content,:status)
 end
 end
 
