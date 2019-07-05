@@ -13,12 +13,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @task = Task.new(user_params)
-    if @task.save
-    flash[:dark]="タスクが投稿されました"
-    redirect_to @task
+    @user = User.new(user_params)
+    if @user.save
+    flash[:dark]="ユーザーを登録しました"
+    redirect_to @user
     else
-    flash.now[:danger]="タスクは投稿されませんでした"
+    flash.now[:danger]="ユーザーの登録に失敗しました"
     render :new
     end
   end
