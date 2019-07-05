@@ -1,0 +1,16 @@
+<ul>
+    <% tasks.each do |task| %>
+    <li>
+   
+        <div>
+            <div>
+            <%= link_to task.user.name, user_path(task.user) %> <span>posted at <%= task.created_at %></span>
+            </div>
+        <div>
+        <p><%= task.content %></p>
+        </div>
+        </div>
+    </li>
+    <% end %>
+    <%= paginate tasks %>
+</ul>
