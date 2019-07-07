@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in 
   before_action :set_task,only: [:show,:edit,:update,:destroy]   
     
 def index 
   if logged_in?
     @task =current_user.tasks.build
     @tasks = current_user.tasks.order(id: :desc).page(params[:page])
+  else redirect_to root_url
   end
 end
 
@@ -21,12 +22,12 @@ def edit
 end
 
 def create
-    @user = current_user.tasks.build(task_params)
-    if @user.save
+    @task = current_user.tasks.build(task_params)
+    if @task.save
       redirect_to root_url
     else
-      @users = current_user.tasks.order(id: :desc).page(params[:page])
-      render "tasks#index"
+      @tasks = current_user.tasks.order(id: :desc).page(params[:page])
+      render :new
     end
 end
 

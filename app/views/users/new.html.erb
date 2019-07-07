@@ -4,7 +4,7 @@
 <div>
     <div>
         <%= form_with(model: @user, local: true) do |f| %>
-        
+        <%= render "layouts/error_tasks", model: f.object %>
         <div>
             <%= f.label :name, "Name" %>
             <%= f.text_field :name %>
