@@ -2,7 +2,7 @@
 
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
  
-  <%= render "tasks/tasks", tasks: @tasks %>
+
    <%@tasks.each do |task|%>
     <li><%=link_to task.id,task%><%=task.status%>&gt;<%=task.content%></li>
     
